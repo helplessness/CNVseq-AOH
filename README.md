@@ -11,6 +11,10 @@ pip install -r requirements.txt
 ```
 ## 数据库文件准备
 以下文件需要放在LP_WGS_hunter/data目录下
+
+特征提取参考[LD-PGTA](https://github.com/mccoy-lab/LD-PGTA)
+
+[数据下载链接](https://drive.google.com/drive/folders/1oPje84IvxaD54kRCg78lywJFo6Q9n0L0?usp=drive_link)
 ```bash
 ╰─$ ll data
 total 29M
@@ -21,8 +25,29 @@ drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:55 ref_panel
 drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
 ```
 
+```
+ref_path
+├── hg19
+│   ├── hg19.fa
+│   ├── hg19.fa.amb
+│   ├── hg19.fa.ann
+│   ├── hg19.fa.bwt
+│   ├── hg19.fa.fai
+│   ├── hg19.fa.pac
+│   └── hg19.fa.sa
+└── hg38
+    ├── hg38bwaidx.amb
+    ├── hg38bwaidx.ann
+    ├── hg38bwaidx.bwt
+    ├── hg38bwaidx.pac
+    ├── hg38bwaidx.sa
+    ├── hg38.fa
+    └── hg38.fa.fai
+```
+
+
 ## 使用方法
-- 异倍体分析流程运行
+- 特征提取流程
     ```bash
     ╰─$ python -m LP_WGS_hunter run --help
 	Usage: python -m LP_WGS_hunter run [OPTIONS] [INPUT_PATH] [OUTPUT_PATH]
@@ -41,25 +66,6 @@ drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
 	--include-x / --no-include-x  是否输出X染色体信息  [default: no-include-x]
 	--help                        Show this message and exit.
     ```
-- 根据样本编号、fq路径配置文件单线程执行
-  样本编号、fq路径配置文件格式(**TAB分割，无表头**，"sample_id fq-path")
-
-    |          |             |
-    | -------- | ----------- |
-    | sample-1 | /path/to/fq |
-    | sample-2 | /path/to/fq |
-
-
-    ```bash
-    ╰─$ python -m LP_WGS_hunter run-file --help
-    Usage: python -m LP_WGS_hunter run-file [OPTIONS]
-
-    Options:
-    --sample-info TEXT    样本信息表格, TAB分割，"sample_id fq-path"  [required]
-    --result-dir TEXT     结果文件夹  [required]
-    --debug / --no-debug  输出debug信息  [default: no-debug]
-    --help                Show this message and exit.
-  ```
 
 - LOH分析
 	```bash
