@@ -10,7 +10,7 @@
 pip install -r requirements.txt
 ```
 ## 数据库文件准备
-以下文件需要放在heteroploidy_hunter/data目录下
+以下文件需要放在LP_WGS_hunter/data目录下
 ```bash
 ╰─$ ll data
 total 29M
@@ -24,8 +24,8 @@ drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
 ## 使用方法
 - 异倍体分析流程运行
     ```bash
-    ╰─$ python -m heteroploidy_hunter run --help
-	Usage: python -m heteroploidy_hunter run [OPTIONS] [INPUT_PATH] [OUTPUT_PATH]
+    ╰─$ python -m LP_WGS_hunter run --help
+	Usage: python -m LP_WGS_hunter run [OPTIONS] [INPUT_PATH] [OUTPUT_PATH]
 
 	Arguments:
 	[INPUT_PATH]   输入文件的绝对路径
@@ -51,8 +51,8 @@ drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
 
 
     ```bash
-    ╰─$ python -m heteroploidy_hunter run-file --help
-    Usage: python -m heteroploidy_hunter run-file [OPTIONS]
+    ╰─$ python -m LP_WGS_hunter run-file --help
+    Usage: python -m LP_WGS_hunter run-file [OPTIONS]
 
     Options:
     --sample-info TEXT    样本信息表格, TAB分割，"sample_id fq-path"  [required]
@@ -61,36 +61,10 @@ drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
     --help                Show this message and exit.
   ```
 
-- 根据样本编号、fq路径配置文件多线程执行
-    ```bash
-    ╰─$ python -m heteroploidy_hunter run-file-parallel --help
-    Usage: python -m heteroploidy_hunter run-file-parallel [OPTIONS]
-
-    Options:
-    --workers INTEGER     使用CPU核数量  [default: 4]
-    --sample-info TEXT    样本信息表格, TAB分割，"sample_id fq-path"  [required]
-    --result-dir TEXT     结果文件夹  [required]
-    --debug / --no-debug  输出debug信息  [default: no-debug]
-    --help                Show this message and exit.
-    ```
-- 分析结果统计
-    ```bash
-    ╰─$ python -m heteroploidy_hunter zscore --help
-    Usage: python -m heteroploidy_hunter zscore [OPTIONS] [INPUT_DIR]
-                                            [OUTPUT_FILE] [FQ_DIR]
-
-	Arguments:
-	[INPUT_DIR]    pkl result directory
-	[OUTPUT_FILE]  output directory
-	[FQ_DIR]       directory containing all fq files
-
-	Options:
-  	--help  Show this message and exit.
-  	```
 - LOH分析
 	```bash
-	╰─$ python -m heteroploidy_hunter rnn-pre-loh --help
-	Usage: python -m heteroploidy_hunter rnn-pre-loh [OPTIONS] [INPUT_PKL]
+	╰─$ python -m LP_WGS_hunter rnn-pre-loh --help
+	Usage: python -m LP_WGS_hunter rnn-pre-loh [OPTIONS] [INPUT_PKL]
                                                  [OUTPUT_DIR]
 
 	Arguments:
@@ -104,16 +78,4 @@ drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
 	--deepth / --no-deepth        深度是否大于0.5  [default: deepth]
 	--include-x / --no-include-x  是否输出X染色体信息  [default: no-include-x]
 	--help                        Show this message and exit.
-	```
-- LOH注释
-	```bash
-	╰─$ python -m heteroploidy_hunter anno --help
-	Usage: python -m heteroploidy_hunter anno [OPTIONS] [INPUT_TXT] [OUTPUT_DIR]
-
-	Arguments:
-	[INPUT_TXT]   loh的输出txt文件
-	[OUTPUT_DIR]  output directory
-
-	Options:
-	--help  Show this message and exit.
 	```
