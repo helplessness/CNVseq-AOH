@@ -17,7 +17,7 @@ import plotly
 #%%
 def get_data(pkl_file,chr_name = None):
     '''
-    获取pkl文件中的平均值，可选按照染色体输出结果
+    Gets the average value in the pkl file, optionally output the result by chromosome
     '''
     _data = pickle.load(open(pkl_file, 'rb'))
     _json = pd.DataFrame(
@@ -40,9 +40,6 @@ def get_data(pkl_file,chr_name = None):
 #%%
 
 def build_model(build=False):
-    '''
-    build model for each chromosome,默认不在输出
-    需要输入文件，同时生成csv文件，用于绘图和计算'''
     # all_data_path = pathlib.Path('/data2/LD-PGTA/cases/guangxiu/0801_result_1M/result')
     all_data_path = pathlib.Path('/data3/guangxiu1125/result/')
     all_data = pd.DataFrame()
