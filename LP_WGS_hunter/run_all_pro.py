@@ -23,38 +23,6 @@ obs_tuple = collections.namedtuple('obs_tuple', ('pos', 'read_id', 'base')) #Enc
 def run_main(file,output_dir, sample_name,control_dir, np=32):
     fq_file = Path(file)
     pkl = add_all.run_aneuploidy_test(fq_file, output_dir, prefix=sample_name, np=np)
-    # pkl = merge_obs.merge_obs(sample_name, output_dir)
-    # print('done merge obs')
-    # df = add_all.get_data(pkl_file=pkl)
-
-    # li = []
-    # for file in control_dir.rglob('*.pkl'):
-    #     _df = add_all.get_data(pkl_file=file)
-    #     if file.parent.name == 'pos':
-    #         _df['karyotype'] = 'triploid'
-    #     else:
-    #         _df['karyotype'] = 'diploid'
-    #     li.append(_df)
-    # df_control = pd.concat(li)
-    # df_control.reset_index(inplace=True, drop=True)
-
-    # df['karyotype'] = sample_name
-    # df.reset_index(inplace=True, drop=True)
-
-    # df_all = pd.concat([df, df_control], ignore_index=True)
-
-    # ax, fig = plt.subplots(figsize=(10, 5))
-
-    # g = sns.lineplot(
-    #     data=df_all, x='index', y='mean_of_mean', hue='karyotype'
-    # )
-    # g.set_xlabel('Chromosome')
-    # g.set_xticks(range(1, 23))
-    # g.set_xticklabels(range(1, 23))
-    # g.set_ylabel('Likelihood')
-
-    # df.to_csv(os.path.join(output_dir,sample_name+'_aneuploidy.csv'),index=False)
-    # plt.savefig(os.path.join(output_dir,sample_name+'_aneuploidy.png'))
 
 
 if __name__ == '__main__':

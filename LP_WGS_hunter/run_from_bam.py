@@ -19,37 +19,6 @@ def run_main_bam(bam_file:str, output_dir:str, sample_name,control_dir,include_x
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     pkl = add_all.run_aneuploidy_test_bam(bam_file, output_dir, prefix=sample_name, np=np,include_x=include_x,ref=ref)
-    # df = add_all.get_data(pkl_file=pkl)
-    # print(df)
-    # li = []
-    # for file in control_dir.rglob('*.pkl'):
-    #     _df = add_all.get_data(pkl_file=file)
-    #     if file.parent.name == 'pos':
-    #         _df['karyotype'] = 'triploid'
-    #     else:
-    #         _df['karyotype'] = 'diploid'
-    #     li.append(_df)
-    # df_control = pd.concat(li)
-    # df_control.reset_index(inplace=True, drop=True)
-
-    # df['karyotype'] = sample_name
-    # df.reset_index(inplace=True, drop=True)
-
-    # df_all = pd.concat([df, df_control], ignore_index=True)
-
-    # ax, fig = plt.subplots(figsize=(10, 5))
-    # # print(df_all)
-    # df_all.index = df_all.index.map(lambda x: x + 1)
-    # g = sns.lineplot(
-    #     data=df_all, x='index', y='mean_of_mean', hue='karyotype'
-    # )
-    # g.set_xlabel('Chromosome')
-    # g.set_xticks(range(0, 23))
-    # g.set_xticklabels(range(1,24))
-    # g.set_ylabel('Likelihood')
-
-    # df.to_csv(os.path.join(output_dir,sample_name+'_aneuploidy.csv'),index=False)
-    # plt.savefig(os.path.join(output_dir,sample_name+'_aneuploidy.png'))
 
 
 if __name__ == '__main__':
