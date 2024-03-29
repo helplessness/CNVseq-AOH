@@ -21,4 +21,4 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9
 
 
 
-# docker run -v /LP_WGS_hunter:/LP_WGS_hunter -v your_input_dir:/input_dir -v your_output_dir:/output_dir --rm -e PYTHONPATH=/LP_WGS_hunter 8c4929f3b027 python3 -m LP_WGS_hunter --help
+# docker run -v /LP_WGS_hunter:/LP_WGS_hunter -v your_input_dir:/input_dir -v your_output_dir:/output_dir --rm -e PYTHONPATH=/LP_WGS_hunter docker_imageId python3 -m LP_WGS_hunter --help
