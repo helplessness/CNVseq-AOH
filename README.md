@@ -16,17 +16,9 @@ pip install -r requirements.txt
 total 29M
 -rw-rw-r-- 1 phoenix phoenix 2.3M  4月 27 09:43 BGRU.model.125_at.h5
 -rw-rw-r-- 1 phoenix phoenix 997K  4月 27 09:43 BGRU.model.50_at.h5
--rw-rw-r-- 1 phoenix phoenix 7.6M  2月  7  2023 bluefuse_by_chrom.txt
-drwxr-xr-x 4 phoenix phoenix 4.0K  2月  7  2023 control
--rw-rw-r-- 1 phoenix phoenix 786K  2月  7  2023 GRU.model.h5
--rw-rw-r-- 1 phoenix phoenix 669K  2月  7  2023 igsr_samples.tsv
--rw-rw-r-- 1 phoenix phoenix  17M  2月  7  2023 ldpgta_by_chrom.txt
 drwxrwxr-x 2 phoenix phoenix 4.0K  2月  7  2023 MODELS
--rw-rw-r-- 1 phoenix phoenix 2.3K  2月  7  2023 README.md
 drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:55 ref_panel
 drwxrwxr-x 4 phoenix phoenix 4.0K 10月 10 09:54 ref_path
--rw-rw-r-- 1 phoenix phoenix  48K 10月 10 16:01 upd-disease.xls
-drwxrwxr-x 2 phoenix phoenix 4.0K  2月 28  2023 zscore
 ```
 
 ## 使用方法
