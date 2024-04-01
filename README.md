@@ -1,4 +1,20 @@
 # 低深度WGS异倍体检测流程
+ We developed a method for predicting the absence of heterozygosity using LP GS data, which overcomes the sparse nature of typical LP GS by combing population-based haplotype information, adjustable sliding windows, and RNN.
+
+Data and results described in the manuscript can be found here：
+
+A tutorial and description of the software can be found here：
+# Docker镜像运行
+
+```
+docker build Dockerfile -t ldwgs:v1
+
+docker run -it --rm -v /home/phoenix/data/:/data ldwgs:v1
+
+docker run -v /LP_WGS_hunter:/LP_WGS_hunter -v your_input_dir:/input_dir -v your_output_dir:/output_dir --rm -e PYTHONPATH=/LP_WGS_hunter ldwgs:v1 python3 -m LP_WGS_hunter --help
+```
+
+# 本地化安装
 
 ## 依赖工具
 - bwa
