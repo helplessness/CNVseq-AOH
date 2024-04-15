@@ -1,10 +1,10 @@
-# 低深度WGS异倍体检测流程
+# LP_WGS_hunter
  We developed a method for predicting the absence of heterozygosity using LP GS data, which overcomes the sparse nature of typical LP GS by combing population-based haplotype information, adjustable sliding windows, and RNN.
 
 Data and results described in the manuscript can be found here：
 
 A tutorial and description of the software can be found here：
-# Docker镜像运行
+# Docker image run
 
 ```
 docker build Dockerfile -t ldwgs:v1
@@ -14,23 +14,23 @@ docker run -it --rm -v /home/phoenix/data/:/data ldwgs:v1
 docker run -v /LP_WGS_hunter:/LP_WGS_hunter -v your_input_dir:/input_dir -v your_output_dir:/output_dir --rm -e PYTHONPATH=/LP_WGS_hunter ldwgs:v1 python3 -m LP_WGS_hunter --help
 ```
 
-# 本地化安装
+# Localized installation
 
-## 依赖工具
+## Dependency tools
 - bwa
 - samtools
 
-## 安装python 依赖 (建议使用独立python环境)
+## Install python dependencies (astandalone python environment is recommended)
 
 ```bash
 pip install -r requirements.txt
 ```
-## 数据库文件准备
-以下文件需要放在LP_WGS_hunter/data目录下
+## Database file preparation
+The following files need to be stored in the LP_WGS_hunter/data directory
 
-特征提取参考[LD-PGTA](https://github.com/mccoy-lab/LD-PGTA)
+Feature Extraction Reference [LD-PGTA](https://github.com/mccoy-lab/LD-PGTA)
 
-[数据下载链接](https://drive.google.com/drive/folders/1oPje84IvxaD54kRCg78lywJFo6Q9n0L0?usp=drive_link)
+[Data download link](https://drive.google.com/drive/folders/1oPje84IvxaD54kRCg78lywJFo6Q9n0L0?usp=drive_link)
 ```bash
 ╰─$ ll data
 total 29M
@@ -62,42 +62,53 @@ ref_path
 ```
 
 
-## 使用方法
-- 特征提取流程
+## How to use?
+- Feature extraction process
     ```bash
     ╰─$ python -m LP_WGS_hunter run --help
 	Usage: python -m LP_WGS_hunter run [OPTIONS] [INPUT_PATH] [OUTPUT_PATH]
 
 	Arguments:
-	[INPUT_PATH]   输入文件的绝对路径
-	[OUTPUT_PATH]  输出文件夹的绝对路径
+		[INPUT_PATH]   the absolute path to the input file
+		[OUTPUT_PATH]  The absolute path to the output folder
 
 	Options:
-	--input-class TEXT            输入文件的类型是文件夹或者单个文件(one or mult)  [default: one]
-	--file-class TEXT             输入文件的类型fq文件或bam文件(fq or bam)  [default: fq]
-	--ref TEXT                    基因组版本号  [default: hg19]
-	--debug / --no-debug          输出debug信息  [default: no-debug]
-	--np INTEGER                  使用CPU核数量  [default: 32]
-	--sample-id TEXT              输出样本结果文件名，不指定使用fq/bam文件名（仅单文件分析模式适用）
-	--include-x / --no-include-x  是否输出X染色体信息  [default: no-include-x]
-	--help                        Show this message and exit.
+		--input-class TEXT            The type of input file is a folder or a single
+										file (one or mult).  [default: one]
+		--file-class TEXT             Type of input file fq file or bam file (fq or
+										bam)  [default: fq]
+		--ref TEXT                    Genome version number  [default: hg19]
+		--debug / --no-debug          Output debugging information  [default: no-
+										debug]
+		--np INTEGER                  Number of CPU cores used  [default: 32]
+		--sample-id TEXT              Output sample result file name, fq/bam file
+										name is not specified (single file analysis
+										mode only applies)
+		--include-x / --no-include-x  Whether to output X chromosome information
+										[default: no-include-x]
+		--help                        Show this message and exit.
     ```
 
-- LOH分析
+- LOH analysis
 	```bash
 	╰─$ python -m LP_WGS_hunter rnn-pre-loh --help
 	Usage: python -m LP_WGS_hunter rnn-pre-loh [OPTIONS] [INPUT_PKL]
                                                  [OUTPUT_DIR]
 
 	Arguments:
-	[INPUT_PKL]   pkl result file
-	[OUTPUT_DIR]  output directory
+		[INPUT_PKL]   pkl result file
+		[OUTPUT_DIR]  output directory
 
 	Options:
-	--thread-num INTEGER          使用CPU核数量  [default: 22]
-	--interval INTEGER            合并区域的间隔大小  [default: 2100000]
-	--length INTEGER              筛选LOH的区域长度  [default: 3500000]
-	--deepth / --no-deepth        深度是否大于0.5  [default: deepth]
-	--include-x / --no-include-x  是否输出X染色体信息  [default: no-include-x]
-	--help                        Show this message and exit.
+		--thread-num INTEGER          Number of CPU cores used  [default: 22]
+		--interval INTEGER            The interval size of the merge area  [default:
+										2100000]
+		--length INTEGER              Filter the area length of the LOH  [default:
+										3500000]
+		--deepth / --no-deepth        The depth is greater than 0.5X,used to select
+										a different model, the default is 125KB model
+										[default: deepth]
+		--include-x / --no-include-x  Whether to output X chromosome information
+										[default: no-include-x]
+		--help                        Show this message and exit.
 	```
